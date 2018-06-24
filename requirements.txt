@@ -4,6 +4,6 @@ flask
 tensorflow
 keras
 gunicorn
-scikit
+scikit-learn
 sckit-image
 Pillow
