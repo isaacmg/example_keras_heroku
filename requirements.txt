@@ -7,3 +7,4 @@ gunicorn
 scikit-learn
 scikit-image
 Pillow
+h5py
