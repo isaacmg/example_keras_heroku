@@ -1,1 +1,1 @@
-web: gunicorn flask_example:app
+web: gunicorn flask_example:app --timeout 60
