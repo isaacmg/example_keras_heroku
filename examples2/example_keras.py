@@ -39,14 +39,19 @@ class ChexNet(KerasModel):
         
         image_array = np.expand_dims(image_array, axis=0)
         return image_array
-    
+    @staticmethod
+    def tup_to_output(input_tuple):
+        return str(input_tuple[0]) + " " + input_tuple[1]
+
     def process_result(self):
         index = 0 
         final = []
-        for i in self.result[0][0][0]:
-            final.append(str(i*100) + "% " + self.class_names[index])
+        the_items = self.result[0][0][0]
+        #the_items = sorted(the_items, reverse=True)
+        for i in the_items:
+            final.append(tuple((str(i*100), self.class_names[index])))
             index +=1  
-        return final 
+        return list(map(self.tup_to_output, sorted(final, key=lambda tup: tup[0])))
 
 class SimpleResNet50(KerasModel):
     def __init__(self, weight_path):

@@ -45,7 +45,7 @@ def upload():
         model_preprocessing=model.preprocessing(save_to)
         #print(model_preprocessing)
         model.predict(model_preprocessing)
-        #show if photo is a photo of hotdog
+        #show if photo is a photo of hotdog 
         return redirect(url_for('classification', result=model.process_result()))
 
 #file show route (not using now)
