@@ -51,7 +51,7 @@ class ChexNet(KerasModel):
         for i in the_items:
             final.append(tuple((str(i*100), self.class_names[index])))
             index +=1  
-        return list(map(self.tup_to_output, sorted(final, key=lambda tup: tup[0])))
+        return list(map(self.tup_to_output, sorted(final, key=lambda tup: tup[0], reverse=True)))
 
 class SimpleResNet50(KerasModel):
     def __init__(self, weight_path):

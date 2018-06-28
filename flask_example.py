@@ -54,5 +54,10 @@ def uploaded_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
 
+@app.route('/switch_model')
+def background_process_test():
+    return "nothing"
+
+
 if __name__ == '__main__':
    app.run()
