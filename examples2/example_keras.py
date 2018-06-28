@@ -14,7 +14,6 @@ class ChexNet(KerasModel):
         self.class_names =  ["Atelectasis","Cardiomegaly", "Effusion", "Infiltration", "Mass", "Nod", "Pneumonia", "Pneumothorax",
         "Consolidation", "Edema", "Emphysema","Fibrosis", "Pleural_Thickening" ,"Hernia"]
         super(ChexNet, self).__init__(weight_path, "create")
-        
 
     def create_model(self, weight_path):
         """
@@ -39,9 +38,10 @@ class ChexNet(KerasModel):
         
         image_array = np.expand_dims(image_array, axis=0)
         return image_array
+
     @staticmethod
     def tup_to_output(input_tuple):
-        return str(input_tuple[0]) + " " + input_tuple[1]
+        return str(round(input_tuple[0], 3)) + " " + input_tuple[1]
 
     def process_result(self):
         index = 0 
@@ -49,7 +49,7 @@ class ChexNet(KerasModel):
         the_items = self.result[0][0][0]
         #the_items = sorted(the_items, reverse=True)
         for i in the_items:
-            final.append(tuple((str(i*100), self.class_names[index])))
+            final.append(tuple((i*100, self.class_names[index])))
             index +=1  
         return list(map(self.tup_to_output, sorted(final, key=lambda tup: tup[0], reverse=True)))
 

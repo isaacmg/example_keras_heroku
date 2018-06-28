@@ -5,7 +5,7 @@
 	<b> Possible conditions present </b>
 	</p>
 	{% for res in result.split(',') %}
-	<p>{{ res}} </p>
+	<p> {{ res.replace("[", "")}} </p>
 	{% endfor %}
 
    </body>
