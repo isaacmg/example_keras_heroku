@@ -8,3 +8,4 @@ scikit-learn
 scikit-image
 Pillow
 h5py
+model_agnostic
